@@ -28,37 +28,33 @@ body {
 
 <script type="text/javascript">
  
-var alleWorte = new Array;
+var alleWorte = new Array();
 
-for (var i = 0; i < alleWorte.length; ++i) {
-  alleWorte[i] = new Array('class="off"', 'class="on"', 'wort');
-}
-
-alleWorte[0][wort] = "kurz"
-alleWorte[1][wort] = "es ist"
-alleWorte[2][wort] = "zehn"
-alleWorte[3][wort] = "nach"
-alleWorte[4][wort] = "viertel"
-alleWorte[5][wort] = "schon" 
-alleWorte[6][wort] = "fünf" 
-alleWorte[7][wort] = "nach" 
-alleWorte[8][wort] = "gerade mal"
-alleWorte[9][wort] = "vor"
-alleWorte[10][wort] = "halb" 
-alleWorte[11][wort] = "drei"
-alleWorte[12][wort] = "sechs"
-alleWorte[13][wort] = "acht"
-alleWorte[14][wort] = "zwölf" 
-alleWorte[15][wort] = "sieben" 
-alleWorte[16][wort] = "null" 
-alleWorte[17][wort] = "fünf"
-alleWorte[18][wort] = "zwei" 
-alleWorte[19][wort] = "mitternacht"
-alleWorte[20][wort] = "eins" 
-alleWorte[21][wort] = "am abend" 
-alleWorte[22][wort] = "zehn" 
-alleWorte[23][wort] = "am vormittag"
-alleWorte[24][wort] = "vier";
+alleWorte[0] = {wort: "kurz"};
+alleWorte[1] = {wort: "es ist"};
+alleWorte[2] = {wort: "zehn"};
+alleWorte[3] = {wort: "nach"};
+alleWorte[4] = {wort: "viertel"};
+alleWorte[5]=  {wort:"schon"}; 
+alleWorte[6] = {wort: "fünf"}; 
+alleWorte[7] = {wort: "nach"}; 
+alleWorte[8] = {wort: "gerade mal"};
+alleWorte[9] = {wort: "vor"};
+alleWorte[10] = {wort: "halb"};
+alleWorte[11] = {wort: "drei"};
+alleWorte[12] = {wort: "sechs"};
+alleWorte[13] = {wort: "acht"};
+alleWorte[14] = {wort: "zwölf"}; 
+alleWorte[15] = {wort: "sieben"}; 
+alleWorte[16] = {wort: "null"}; 
+alleWorte[17] = {wort: "fünf"};
+alleWorte[18] = {wort: "zwei"}; 
+alleWorte[19] = {wort: "mitternacht"};
+alleWorte[20] = {wort: "eins"}; 
+alleWorte[21] = {wort: "am abend"}; 
+alleWorte[22] = {wort: "zehn"}; 
+alleWorte[23] = {wort: "am vormittag"};
+alleWorte[24] = {wort: "vier"};
 
 
 var jetzt = new Date();
@@ -91,11 +87,31 @@ if (jetzt.getMinutes() >=48 && jetzt.getMinutes() <=52) ca = 'zehn vor ';
 if (jetzt.getMinutes() >=53 && jetzt.getMinutes() <=56) ca = 'fünf vor ';
 if (jetzt.getMinutes() >=57 && jetzt.getMinutes() <=59) ca = 'kurz vor ';
 
+var stunden = [
+	'null', 'eins', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun', 'zehn', 'ölf', 'zwölf'
+];
+
+var stunde = jetzt.getHours();
+if (jetzt.getMinutes() >= 30) {
+	stunde++;
+}
+if (stunde >12) {
+	stunde -= 12;
+}
+var meineStunde = stunden[stunde];
+
+
 var wortanzahl = alleWorte.length;
 var wortnr = 0;
 
-while (wortnr <= wortanzahl) {
-	document.write('<font id="' + alleWorte[wortnr][2] + '" ' + alleWorte[wortnr][0] + '>' + alleWorte[wortnr][wort] + ' ' + '</font>'); 
+document.write('<font class="on">' + ca + ' ' + '</font>'); 
+while (wortnr < wortanzahl) {
+	if (meineStunde == alleWorte[wortnr]['wort']) {
+		document.write('<font class="on">' + alleWorte[wortnr]["wort"] + ' ' + '</font>'); 
+	} else {
+		document.write('<font>' + alleWorte[wortnr]["wort"] + ' ' + '</font>'); 
+	}
+	
 	wortnr = wortnr + 1;
 }
 
