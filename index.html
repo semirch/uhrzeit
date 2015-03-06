@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="apple-mobile-web-app-capable"content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Uhrzeit 1.0</title>
+<style type="text/css">
+<!--
+body {
+	font-family: Helvetica;
+	font-weight: bolder;
+	color:#333 ;
+	background-color: #000;
+	font-size:50px;
+}
+.on {
+	color: #fff;
+}
+.off {
+	color: #333;
+}
+-->
+</style>
+</head>
+    
+<body>
+
+<script type="text/javascript">
+ 
+var alleWorte = new Array;
+
+for (var i = 0; i < alleWorte.length; ++i) {
+  alleWorte[i] = new Array('class="off"', 'class="on"', 'wort');
+}
+
+alleWorte[0][wort] = "kurz"
+alleWorte[1][wort] = "es ist"
+alleWorte[2][wort] = "zehn"
+alleWorte[3][wort] = "nach"
+alleWorte[4][wort] = "viertel"
+alleWorte[5][wort] = "schon" 
+alleWorte[6][wort] = "fünf" 
+alleWorte[7][wort] = "nach" 
+alleWorte[8][wort] = "gerade mal"
+alleWorte[9][wort] = "vor"
+alleWorte[10][wort] = "halb" 
+alleWorte[11][wort] = "drei"
+alleWorte[12][wort] = "sechs"
+alleWorte[13][wort] = "acht"
+alleWorte[14][wort] = "zwölf" 
+alleWorte[15][wort] = "sieben" 
+alleWorte[16][wort] = "null" 
+alleWorte[17][wort] = "fünf"
+alleWorte[18][wort] = "zwei" 
+alleWorte[19][wort] = "mitternacht"
+alleWorte[20][wort] = "eins" 
+alleWorte[21][wort] = "am abend" 
+alleWorte[22][wort] = "zehn" 
+alleWorte[23][wort] = "am vormittag"
+alleWorte[24][wort] = "vier";
+
+
+var jetzt = new Date();
+
+// jedes feld muss noch ein string-feld haben, das die klasse auf on oder off setzt
+//dann folgt eine bedingungsreihe in der je nach minutenzahl die entsprechenden felder 'scharf' oder wieder grau gesetzt werden
+
+// und dann fehlt noch:
+//- die ständige aktualisierung
+//- anpassung an iphone und ipad
+//- evtl. das logo für den screen
+//- evtl. app
+//- evtl. ein schönerer effekt
+
+// diese regeln zum setzen des status nutzen:
+var ca;
+if (jetzt.getMinutes() !=0 && jetzt.getMinutes() <=3) ca = 'kurz nach ';
+if (jetzt.getMinutes() >=4 && jetzt.getMinutes() <=6) ca = 'fünf nach ';
+if (jetzt.getMinutes() >=7 && jetzt.getMinutes() <=13) ca = 'zehn nach ';
+if (jetzt.getMinutes() >=14 && jetzt.getMinutes() <=17) ca = 'viertel nach ';
+if (jetzt.getMinutes() >=18 && jetzt.getMinutes() <=23) ca = 'zwanzig nach ';
+if (jetzt.getMinutes() >=24 && jetzt.getMinutes() <=26) ca = 'fünf vor halb ';
+if (jetzt.getMinutes() >=27 && jetzt.getMinutes() <=29) ca = 'kurz vor halb ';
+if (jetzt.getMinutes() ==30) ca = 'halb ';
+if (jetzt.getMinutes() >=31 && jetzt.getMinutes() <=33) ca = 'kurz nach halb ';
+if (jetzt.getMinutes() >=34 && jetzt.getMinutes() <=36) ca = 'fünf nach halb ';
+if (jetzt.getMinutes() >=37 && jetzt.getMinutes() <=43) ca = 'zwanzig vor ';
+if (jetzt.getMinutes() >=44 && jetzt.getMinutes() <=47) ca = 'viertel vor ';
+if (jetzt.getMinutes() >=48 && jetzt.getMinutes() <=52) ca = 'zehn vor ';
+if (jetzt.getMinutes() >=53 && jetzt.getMinutes() <=56) ca = 'fünf vor ';
+if (jetzt.getMinutes() >=57 && jetzt.getMinutes() <=59) ca = 'kurz vor ';
+
+var wortanzahl = alleWorte.length;
+var wortnr = 0;
+
+while (wortnr <= wortanzahl) {
+	document.write('<font id="' + alleWorte[wortnr][2] + '" ' + alleWorte[wortnr][0] + '>' + alleWorte[wortnr][wort] + ' ' + '</font>'); 
+	wortnr = wortnr + 1;
+}
+
+</script>
+
+</body>
+</html>
